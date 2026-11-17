@@ -1,0 +1,139 @@
+# 🚀 SRE – SLI, SLO, SLA & Error Budget Monitoring
+
+> **A hands-on Site Reliability Engineering project** to understand, measure, and improve application reliability.
+
+## 🎯 What is SRE?
+
+Site Reliability Engineering (SRE) applies software engineering principles to operations to build reliable, scalable, and efficient systems.
+
+## 🧠 Core Concepts – Quick Revision
+
+| Concept | Remember it as |
+|---|---|
+| 📊 **SLI** | What is the actual service performance? |
+| 🎯 **SLO** | What performance target do we want? |
+| 🤝 **SLA** | What have we promised our customers? |
+| 💰 **Error Budget** | How much failure can we tolerate? |
+| 🔥 **Burn Rate** | How fast are we consuming the error budget? |
+
+## 🏗️ Project Architecture
+
+```text
+       Users / Load Generator
+                |
+                ▼
+        Flask Application
+                |
+                ▼
+          /metrics
+                |
+                ▼
+           Prometheus
+           /        \
+          ▼          ▼
+       Grafana   Alertmanager
+      Dashboard     Alerts
+```
+
+## 🛠️ Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| 🐍 Python + Flask | Application |
+| 📈 Prometheus | Metrics collection |
+| 🔍 PromQL | Reliability calculations |
+| 📊 Grafana | Dashboards |
+| 🚨 Alertmanager | Alert management |
+| 🐳 Docker Compose | Local orchestration |
+| ☸️ Kubernetes + AWS EKS | Cloud deployment |
+
+## 🎯 Initial SLO Targets
+
+| Indicator | Target |
+|---|---:|
+| Availability | **99.9%** |
+| Success Rate | **99%** |
+| Latency | **95% under 200 ms** |
+| Measurement Window | **Rolling 30 days** |
+
+## 🧮 Important Formulas
+
+**1. Availability**
+```text
+(Requests with status < 500 / Total Requests) × 100
+```
+
+**2. Success Rate**
+```text
+(HTTP 2xx Requests / Total Requests) × 100
+```
+
+**3. Error Rate**
+```text
+(HTTP 5xx Requests / Total Requests) × 100
+```
+
+**4. Error Budget**
+```text
+1 - SLO Target
+```
+
+**5. Error Budget Consumption**
+```text
+(Actual Bad Events / Allowed Bad Events) × 100
+```
+
+**6. Burn Rate**
+```text
+Observed Error Rate / Allowed Error Rate
+```
+
+## 📡 What Will We Monitor?
+
+- Total HTTP requests and requests per second
+- Successful and failed requests
+- API response time
+- P50, P95 and P99 latency
+- SLO compliance percentage
+- Remaining error budget
+- Error budget burn rate
+
+## 🧪 Practical Experiments
+
+- [ ] Generate normal API traffic.
+- [ ] Simulate HTTP 500 errors.
+- [ ] Introduce artificial latency.
+- [ ] Generate high and burst traffic.
+- [ ] Observe SLO violations.
+- [ ] Monitor error budget consumption.
+- [ ] Test application recovery.
+
+## 📂 Repository Structure
+
+```text
+📁 app/             → Flask application
+📁 prometheus/      → Metrics and alerting rules
+📁 grafana/         → Dashboards
+📁 alertmanager/    → Alert configuration
+📁 load-testing/    → Traffic simulation
+📁 docs/            → Technical documentation
+📁 k8s/             → Kubernetes manifests
+```
+
+## 📚 What Will I Learn?
+
+- Understand SRE fundamentals.
+- Implement application-level monitoring.
+- Write PromQL queries.
+- Calculate SLIs, SLOs and error budgets.
+- Configure multi-window burn-rate alerts.
+- Build Grafana dashboards.
+- Deploy monitoring systems using Docker and Kubernetes.
+
+---
+
+## 🔄 My Learning Approach
+
+**Learn → Understand → Implement → Monitor → Analyze → Improve**
+
+<sub>📌 Project Status: Architecture finalized | Implementation in progress</sub>
